@@ -128,8 +128,8 @@ export const Demo: React.FC<{ page: number, total: number }> = ({ page, total })
                            <Calculator className="w-8 h-8 mr-4 text-purple-500 shrink-0" />
                            <span className="leading-tight text-base">
                               {problemLang === 'en' 
-                                ? "Triangle ABC, side a=4, Angle A=60°. Find the range of the area."
-                                : "已知 \u25B3ABC 中，a=4，\u2220A=60\u00B0，求 \u25B3ABC 面积的取值范围。"}
+                                ? "Line x+y+2=0 intersects axes at A and B. Circle: (x-2)²+y²=2. Find area range of triangle ABP."
+                                : "直线 x + y + 2 = 0 与坐标轴交于 A、B 两点，圆：(x-2)² + y² = 2。求△ABP面积范围。"}
                            </span>
                         </div>
                       )}
