@@ -129,7 +129,7 @@ export const Demo: React.FC<{ page: number, total: number }> = ({ page, total })
                            <span className="leading-tight text-base">
                               {problemLang === 'en' 
                                 ? "Line x+y+2=0 intersects axes at A and B. Circle: (x-2)²+y²=2. Find area range of triangle ABP."
-                                : "直线 x + y + 2 = 0 与坐标轴交于 A、B 两点，圆：(x-2)² + y² = 2。求△ABP面积范围。"}
+                                : "直线 x+y+2=0 与坐标轴交于A、B两点，圆：(x-2)²+y²=2。求△ABP面积范围。"}
                            </span>
                         </div>
                       )}
