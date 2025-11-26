@@ -40,7 +40,6 @@ export default function App() {
         setScale(1);
       } else {
         // Desktop Mode: Fit-Contain 16:9 Scaling with Safe Area
-        // We enforce a margin even in fullscreen to maintain aesthetics and avoid edge-touching
         const horizontalPadding = isFullscreen ? 40 : 64; 
         const verticalPadding = isFullscreen ? 30 : 64;
         
@@ -50,7 +49,6 @@ export default function App() {
         const scaleW = availableW / BASE_WIDTH;
         const scaleH = availableH / BASE_HEIGHT;
 
-        // Fit Contain strategy: Find the smaller scale to ensure it fits entirely
         const newScale = Math.min(scaleW, scaleH);
         setScale(newScale);
       }
@@ -59,7 +57,6 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     handleResize();
     
-    // Double check scaling after layout paints
     setTimeout(handleResize, 50);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -125,12 +122,12 @@ export default function App() {
   return (
     <div className={`fixed inset-0 flex items-center justify-center bg-transparent ${isMobile ? 'overflow-y-auto items-start' : 'overflow-hidden'}`}>
       
-      {/* Container - Conditional Rendering based on Device Type */}
+      {/* Slide Container */}
       <div 
         style={!isMobile ? {
           width: BASE_WIDTH,
           height: BASE_HEIGHT,
-          transform: `scale(${scale}) translate3d(0,0,0)`, // Force GPU on Desktop
+          transform: `scale(${scale}) translate3d(0,0,0)`,
           transformOrigin: 'center center',
         } : {
           width: '100%',
@@ -142,47 +139,61 @@ export default function App() {
           <AnimatePresence mode="wait">
             {renderSlide()}
           </AnimatePresence>
-
-          {/* Floating Controls */}
-          <div className={`fixed z-[9999] ${isMobile ? 'bottom-4 right-4 left-auto' : 'absolute bottom-6 left-1/2 -translate-x-1/2'}`}>
-             <div className="bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5 flex items-center space-x-5 shadow-2xl transition-opacity duration-300 hover:bg-slate-950 scale-90 origin-bottom">
-                <button 
-                  onClick={prevSlide}
-                  disabled={currentSlide === 0}
-                  className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  aria-label="Previous Slide"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                
-                <span className="text-white/90 font-mono text-sm font-medium min-w-[60px] text-center select-none tracking-wider">
-                  {String(currentSlide + 1).padStart(2, '0')} / {TOTAL_SLIDES}
-                </span>
-
-                <button 
-                  onClick={nextSlide}
-                  disabled={currentSlide === TOTAL_SLIDES - 1}
-                  className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  aria-label="Next Slide"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-
-                {!isMobile && (
-                  <>
-                    <div className="w-px h-5 bg-white/20"></div>
-                    <button 
-                      onClick={toggleFullscreen}
-                      className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-                      title="Toggle Fullscreen"
-                    >
-                      {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-                    </button>
-                  </>
-                )}
-             </div>
-          </div>
         </div>
+      </div>
+
+      {/* Floating Controls - Moved outside scaling container to be viewport-relative */}
+      <div className={`fixed z-[9999] ${
+        isMobile 
+          ? 'bottom-4 right-4 left-auto' 
+          : 'bottom-0 left-0 right-0 h-32 flex items-end justify-center pb-8 group pointer-events-none'
+      }`}>
+         {/* Sensor Area: Invisible layer to catch mouse hover on desktop */}
+         {!isMobile && <div className="absolute inset-0 w-full h-full pointer-events-auto"></div>}
+
+         <div className={`
+           bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5 flex items-center space-x-5 shadow-2xl 
+           transition-all duration-500 ease-out origin-bottom
+           ${isMobile 
+             ? 'scale-90' 
+             : 'pointer-events-auto translate-y-[150%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-100 hover:bg-slate-950'
+           }
+         `}>
+            <button 
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            <span className="text-white/90 font-mono text-sm font-medium min-w-[60px] text-center select-none tracking-wider">
+              {String(currentSlide + 1).padStart(2, '0')} / {TOTAL_SLIDES}
+            </span>
+
+            <button 
+              onClick={nextSlide}
+              disabled={currentSlide === TOTAL_SLIDES - 1}
+              className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              aria-label="Next Slide"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            {!isMobile && (
+              <>
+                <div className="w-px h-5 bg-white/20"></div>
+                <button 
+                  onClick={toggleFullscreen}
+                  className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                  title="Toggle Fullscreen"
+                >
+                  {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                </button>
+              </>
+            )}
+         </div>
       </div>
     </div>
   );
