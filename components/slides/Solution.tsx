@@ -148,7 +148,7 @@ export const Solution: React.FC<{ page: number, total: number }> = ({ page, tota
                </div>
                
                <p className="text-slate-600 text-sm mb-4 leading-relaxed font-medium">
-                 Builds the foundation of knowledge through rich, abstract visualizations of complex topics.
+                 Builds the foundation of knowledge through visualizations of complex topics.
                </p>
                
                {/* Bullets */}
