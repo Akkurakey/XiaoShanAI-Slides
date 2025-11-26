@@ -110,7 +110,7 @@ export const Demo: React.FC<{ page: number, total: number }> = ({ page, total })
                           <div className="flex items-center">
                              <Atom className="w-8 h-8 mr-4 text-blue-500 shrink-0" />
                              <div className="leading-tight">
-                                <span className="text-base">"Explain: ReNR (Residual Neural Radiance) in English"</span>
+                                <span className="text-base">"Explain: Residual Neural Radiance in English"</span>
                                 <div className="text-xs text-slate-400 mt-0.5">Computer Vision</div>
                              </div>
                           </div>
