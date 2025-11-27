@@ -9,7 +9,7 @@ export enum SlideId {
   ARCHITECTURE = 3,
   DEMO = 4,
   PARTNERSHIPS = 5,
-  CASES = 6
+  USECASES = 6
   REQUIREMENTS = 7,
   IMPACT = 8,
   FUTURE = 9,
