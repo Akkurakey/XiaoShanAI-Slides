@@ -16,7 +16,7 @@ import { Impact } from './components/slides/Impact';
 import { Future } from './components/slides/Future';
 import { End } from './components/slides/End';
 
-const TOTAL_SLIDES = 11;
+const TOTAL_SLIDES = 12;
 const BASE_WIDTH = 1600;
 const BASE_HEIGHT = 900;
 const MOBILE_BREAKPOINT = 1024;
