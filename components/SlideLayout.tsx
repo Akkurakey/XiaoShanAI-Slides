@@ -36,7 +36,7 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
         <div className="absolute top-6 right-8 flex items-center space-x-3 z-20 select-none">
            <span className="font-serif font-bold text-slate-700 tracking-wider text-sm opacity-80">Xiaoshan AI</span>
            <img 
-             src="/assets/logo.png" 
+             src="/assets/LOGO.png" 
              alt="Xiaoshan AI Logo" 
              className="w-10 h-10 object-contain drop-shadow-sm"
            />
