@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BrainCircuit } from 'lucide-react';
 
 interface SlideLayoutProps {
   children: React.ReactNode;
@@ -34,11 +33,13 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
       <div className="flex-1 px-6 lg:px-16 pt-14 pb-24 lg:pb-20 flex flex-col relative z-0 min-h-0">
         
         {/* Logo - Absolute positioned */}
-        <div className="absolute top-6 lg:top-10 right-6 lg:right-14 flex items-center space-x-3 opacity-90 z-20 group select-none">
-           <div className="p-2.5 rounded-xl bg-white/60 border border-white/60 shadow-sm group-hover:bg-white/80 transition-colors duration-300">
-             <BrainCircuit className="w-6 h-6 text-slate-800" />
-           </div>
-           <span className="font-bold text-slate-800 tracking-wider text-base uppercase font-serif hidden sm:inline">Xiaoshan AI</span>
+        <div className="absolute top-6 right-8 flex items-center space-x-3 z-20 select-none">
+           <span className="font-serif font-bold text-slate-700 tracking-wider text-sm opacity-80">Xiaoshan AI</span>
+           <img 
+             src="/assets/logo.png" 
+             alt="Xiaoshan AI Logo" 
+             className="w-10 h-10 object-contain drop-shadow-sm"
+           />
         </div>
 
         {/* Header Section */}
