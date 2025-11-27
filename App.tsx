@@ -10,6 +10,7 @@ import { VideoDemo } from './components/slides/VideoDemo';
 import { Architecture } from './components/slides/Architecture';
 import { Demo } from './components/slides/Demo';
 import { Partnerships } from './components/slides/Partnerships';
+import { UseCases } from './components/slides/UseCases';
 import { Requirements } from './components/slides/Requirements';
 import { Impact } from './components/slides/Impact';
 import { Future } from './components/slides/Future';
@@ -111,10 +112,11 @@ export default function App() {
       case 4: return <Architecture key="architecture" {...commonProps} />;
       case 5: return <Demo key="demo" {...commonProps} />;
       case 6: return <Partnerships key="partnerships" {...commonProps} />;
-      case 7: return <Requirements key="requirements" {...commonProps} />;
-      case 8: return <Impact key="impact" {...commonProps} />;
-      case 9: return <Future key="future" {...commonProps} />;
-      case 10: return <End key="end" {...commonProps} />;
+      case 7: return <UseCases key="usecases" {...commonProps} />;
+      case 8: return <Requirements key="requirements" {...commonProps} />;
+      case 9: return <Impact key="impact" {...commonProps} />;
+      case 10: return <Future key="future" {...commonProps} />;
+      case 11: return <End key="end" {...commonProps} />;
       default: return <Cover key="cover" {...commonProps} />;
     }
   };
