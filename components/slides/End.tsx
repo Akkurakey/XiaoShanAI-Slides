@@ -1,93 +1,98 @@
 import React from 'react';
 import { SlideLayout } from '../SlideLayout';
-import { BrainCircuit, Sparkles, ArrowRight } from 'lucide-react';
+import { BrainCircuit, Sparkles, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const End: React.FC<{ page: number, total: number }> = ({ page, total }) => {
   return (
-    <SlideLayout pageNumber={page} totalPages={total} className="bg-transparent">
-      <div className="h-full flex flex-col justify-center items-center text-center relative z-10 pb-16">
-        
-        {/* Abstract Background Icons */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-           <motion.div animate={{ y: [0, -20, 0], opacity: [0.1, 0.2, 0.1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-20 left-10 text-[5rem] lg:text-[10rem] text-slate-800 opacity-5 font-serif leading-none blur-sm">∫</motion.div>
-           <motion.div animate={{ y: [0, 30, 0], opacity: [0.1, 0.2, 0.1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-40 right-20 text-[5rem] lg:text-[10rem] text-slate-800 opacity-5 font-serif leading-none blur-sm">∑</motion.div>
-           <div className="absolute top-1/3 right-10 text-[4rem] lg:text-[8rem] text-slate-800 opacity-5 font-serif leading-none blur-sm">π</div>
-           <div className="absolute bottom-10 left-1/4 text-[4rem] lg:text-[8rem] text-slate-800 opacity-5 font-serif leading-none blur-sm">√</div>
-        </div>
+    <SlideLayout pageNumber={page} totalPages={total} className="bg-slate-50/50">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
+      </div>
 
+      <div className="h-full flex flex-col justify-center items-center text-center relative z-10 pb-12 lg:pb-16 px-6">
+        
+        {/* Logo / Brand Small */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-6"
+          transition={{ duration: 0.6 }}
+          className="mb-8"
         >
-           <div className="px-6 py-2 lg:px-8 lg:py-3 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-lg inline-flex items-center space-x-3 lg:space-x-4 mb-2 hover:scale-105 transition-transform cursor-default">
-             <BrainCircuit className="w-8 h-8 lg:w-10 lg:h-10 text-blue-700" />
-             <span className="text-xl lg:text-3xl font-serif font-bold text-slate-800 tracking-wide">Xiaoshan AI</span>
+           <div className="flex items-center space-x-2 text-slate-400">
+             <BrainCircuit className="w-5 h-5" />
+             <span className="text-sm font-semibold tracking-widest uppercase">Xiaoshan AI</span>
            </div>
         </motion.div>
 
-        {/* Big Gradient Title */}
-        <motion.h1 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-6xl md:text-8xl lg:text-[9rem] font-serif font-black mb-6 lg:mb-10 tracking-tighter leading-[0.85] drop-shadow-sm select-none text-transparent bg-clip-text bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700"
-        >
-          Thank You
-        </motion.h1>
-
-        {/* Improved Join Us Section */}
+        {/* Main Title: Thank You */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.3 }}
-           className="relative mb-8 lg:mb-12 flex flex-col items-center px-4"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mb-12"
         >
-          <div className="flex items-center space-x-3 mb-4">
-             <div className="h-px w-8 lg:w-12 bg-slate-300"></div>
-             <span className="text-xs lg:text-sm font-bold uppercase tracking-widest text-slate-400">Our Mission</span>
-             <div className="h-px w-8 lg:w-12 bg-slate-300"></div>
-          </div>
-          <h2 className="text-3xl lg:text-5xl font-serif text-slate-800 leading-tight tracking-tight">
-             Join Us in Democratizing Education
-          </h2>
-          <div className="w-16 h-1 lg:w-24 lg:h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-4 lg:mt-6"></div>
+          <h1 className="text-7xl md:text-9xl font-serif font-black tracking-tighter text-slate-900 drop-shadow-sm leading-none">
+            Thank You
+          </h1>
+          <motion.div 
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-1.5 md:h-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full mx-auto mt-2 opacity-80"
+            style={{ maxWidth: '120px' }}
+          />
         </motion.div>
 
-        {/* Quote */}
-        <motion.div 
-           initial={{ opacity: 0, y: 20 }}
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.5 }}
-           className="max-w-4xl mx-auto px-6"
+           transition={{ duration: 0.8, delay: 0.2 }}
+           className="max-w-3xl w-full mx-auto"
         >
-          <div className="relative">
-             <QuoteIcon className="absolute -top-6 -left-4 lg:-left-8 w-8 h-8 lg:w-12 lg:h-12 text-blue-200/50" />
-             <p className="text-xl lg:text-3xl font-serif italic text-slate-600 leading-relaxed font-medium">
-               "Technology is best when it brings people together and makes education accessible."
-             </p>
-             <QuoteIcon className="absolute -bottom-6 -right-4 lg:-right-8 w-8 h-8 lg:w-12 lg:h-12 text-blue-200/50 rotate-180" />
+          <div className="relative bg-white/70 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl p-8 md:p-12 text-center overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-500">
+             
+
+             <Quote className="absolute top-4 left-6 w-12 h-12 text-slate-100 -scale-x-100 opacity-80" />
+             
+             <div className="relative z-10 space-y-6">
+               <div className="flex items-center justify-center space-x-4 mb-2">
+                 <div className="h-px w-8 bg-slate-300"></div>
+                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Our Vision</span>
+                 <div className="h-px w-8 bg-slate-300"></div>
+               </div>
+
+               <p className="text-xl md:text-2xl font-serif text-slate-700 leading-relaxed">
+                 Rising from the remote mountains, our founder knows the struggle of limited educational resources. 
+               </p>
+               
+               <p className="text-xl md:text-2xl font-serif text-slate-700 leading-relaxed">
+                 We are on a mission to democratize education using 
+                 <span className="block mt-4 text-3xl md:text-4xl">
+                   <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-600">AI</span>
+                   <span className="mx-3 font-serif italic font-light text-slate-400">&</span>
+                   <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600 font-serif italic">Love</span>
+                 </span>
+               </p>
+             </div>
+
+             <Quote className="absolute bottom-4 right-6 w-12 h-12 text-slate-100 opacity-80" />
           </div>
         </motion.div>
         
-        {/* Footer Pill */}
+        {/* Simple Footer */}
         <motion.div 
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.6 }}
-           className="mt-12 lg:mt-16 flex items-center space-x-3 text-slate-500 font-medium bg-white/40 px-6 py-2.5 rounded-full backdrop-blur-md border border-white/40 shadow-sm"
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 1, delay: 0.8 }}
+           className="mt-16 flex items-center space-x-2 text-slate-400/80 text-xs tracking-widest uppercase font-medium"
         >
-           <Sparkles className="w-4 h-4 text-purple-500" />
-           <span className="font-mono tracking-[0.2em] uppercase text-[10px] lg:text-xs">Cambridge EduX Hackathon 2025</span>
+           <Sparkles className="w-3 h-3" />
+           <span>Cambridge EduX Hackathon 2025</span>
         </motion.div>
 
       </div>
     </SlideLayout>
   );
 };
-
-const QuoteIcon = ({ className }: { className?: string }) => (
-  <svg fill="currentColor" viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" /></svg>
-);
