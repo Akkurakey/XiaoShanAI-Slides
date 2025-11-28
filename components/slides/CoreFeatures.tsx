@@ -14,7 +14,7 @@ export const CoreFeatures: React.FC<{ page: number, total: number }> = ({ page, 
         <div className="w-full max-w-5xl aspect-video bg-gray-900 rounded-xl shadow-2xl border border-gray-700 overflow-hidden relative">
           
           <video 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-container"
             controls
             autoPlay
             muted
