@@ -77,7 +77,7 @@ export const Impact: React.FC<{ page: number, total: number }> = ({ page, total 
                  Speed
                </div>
                <div className="text-slate-500 font-medium">Weeks of editing</div>
-               <div className="font-bold text-slate-900">Seconds to Mins</div>
+               <div className="font-bold text-slate-900">3-5 Mins</div>
                <div><span className="text-emerald-700 font-bold bg-emerald-100/50 px-3 py-1 rounded-md text-xs border border-emerald-200 shadow-sm">Instant</span></div>
              </div>
 
